@@ -47,7 +47,9 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -63,6 +65,7 @@ router.post("/forgot-password", async (req, res) => {
 
     res.status(200).json({ message: "OTP sent to your email" });
   } catch (error) {
+    console.error("Error in /forgot-password:", error);
     res.status(500).json({ message: "Error sending OTP email", error: error.message });
   }
 });
