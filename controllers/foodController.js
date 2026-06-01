@@ -47,6 +47,7 @@ out center 60;
       {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "EpicNomadsApp/1.0 (contact@epicnomads.com)",
         },
       }
     );
